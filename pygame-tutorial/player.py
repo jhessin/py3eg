@@ -1,12 +1,19 @@
-import pygame
-from gameObject import GameObject
+""" Holds the Player GameObject and logic """
+from game_object import GameObject
+from pygame import Vector2
 
 
 class Player(GameObject):
-    def __init__(self, x: float, y: float, width: float, height: float,
-                 image_path: str, speed: int) -> None:
-        super().__init__(x, y, width, height, image_path)
+    """ The Player class handles player movement, score, etc """
+    def __init__(self, pos: Vector2, scale: Vector2, image_path: str,
+                 speed: int) -> None:
+        """ Initializes the Player """
+        super().__init__(pos, scale.x, scale.y, image_path)
         self.speed: int = speed
 
-    def move(self, direction):
-        self.y += (direction * self.speed)
+    def move(self, direction: int, max_height: float):
+        """ Move the player """
+        if (self.pos.y >= max_height - self.height
+                and direction > 0) or (self.pos.y <= 0 and direction < 0):
+            return
+        self.pos.y += (direction * self.speed)

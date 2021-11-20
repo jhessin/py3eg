@@ -19,16 +19,22 @@ class GameObject:
 
     def detect_collision(self, other) -> bool:
         """ Detect collision with another object """
-        object_1 = self.pos
-        object_2 = other.pos
-        if object_1.y > (object_2.y + other.height):
-            return False
-        elif (object_1.y + self.height) < object_2.y:
-            return False
+        # object_1 = self.pos
+        # object_2 = other.pos
+        # if object_1.y > (object_2.y + other.height):
+        #     return False
+        # if (object_1.y + self.height) < object_2.y:
+        #     return False
 
-        if object_1.x > (object_2.x + other.width):
-            return False
-        elif (object_1.x + self.width) < object_2.x:
-            return False
+        # if object_1.x > (object_2.x + other.width):
+        #     return False
+        # if (object_1.x + self.width) < object_2.x:
+        #     return False
+        this_rect = pygame.Rect(self.pos.x, self.pos.y, self.width,
+                                self.height)
+        other_rect = pygame.Rect(other.pos.x, other.pos.y, other.width,
+                                 other.height)
+        if this_rect.colliderect(other_rect):
+            return True
 
-        return True
+        return False

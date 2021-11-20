@@ -81,7 +81,7 @@ class Game:
             # Detect collisions
             if self.player.detect_collision(self.enemy):
                 return
-            elif self.player.detect_collision(self.treasure):
+            if self.player.detect_collision(self.treasure):
                 return
 
             self.clock.tick(60)

@@ -6,10 +6,10 @@ from pygame import Vector2
 class Player(GameObject):
     """ The Player class handles player movement, score, etc """
     def __init__(self, pos: Vector2, scale: Vector2, image_path: str,
-                 speed: int) -> None:
+                 speed: float) -> None:
         """ Initializes the Player """
         super().__init__(pos, scale.x, scale.y, image_path)
-        self.speed: int = speed
+        self.speed: float = speed
 
     def move(self, direction: int, max_height: float):
         """ Move the player """

@@ -1,4 +1,6 @@
 """ Holds the base GameObject and Vector for positioning """
+from __future__ import annotations
+
 import pygame
 from pygame import Vector2
 
@@ -17,7 +19,7 @@ class GameObject:
         """Render the game object to the given screen"""
         screen.blit(self.image, (self.pos.x, self.pos.y))
 
-    def detect_collision(self, other) -> bool:
+    def detect_collision(self, other: GameObject) -> bool:
         """ Detect collision with another object """
         # object_1 = self.pos
         # object_2 = other.pos

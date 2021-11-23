@@ -6,7 +6,7 @@ from tkinter import (
     Entry,
     Button,
     Label,
-    font,
+    Frame,
 )
 from typing import List
 
@@ -16,16 +16,24 @@ class App:
     root: Tk
     label_text: Variable
     entry_text: Variable
-    list_item_strings: List[str]
+    list_item_strings: List[str] = ['Hey', 'Hi', 'Hello', 'Howdy', 'Greetings']
 
     def __init__(self, root) -> None:
         # start by saving the root
         self.root = root
-        self.root.title("My app")
+        root.title("My app")
         # sets the initial size (doesn't work in grid layouts)
         # root.geometry("500x400")
         # sets the maximum size of the window (Does work in grid layouts)
         # root.maxsize(500, 400)
+
+        frame = Frame(
+            root,
+            width=200,
+            height=100,
+            relief='raised',
+            borderwidth=2,
+        )
 
         self.entry_text = Variable()
         self.label_text = Variable(value='New label text')
@@ -50,9 +58,8 @@ class App:
         )
 
         button = Button(root, text="Submit", command=self.press_button)
-        button.configure(width=10, height=2, font=('Courier', 40))
+        # button.configure(width=10, height=2, font=('Courier', 40))
 
-        self.list_item_strings = ['Hey', 'Hi', 'Hello', 'Howdy', 'Greetings']
         list_items = Variable(value=self.list_item_strings)
         listbox = Listbox(root, listvariable=list_items)
         listbox["height"] = 3
@@ -76,7 +83,8 @@ class App:
         # button.grid(column=1, row=2, sticky='SEW')
         # listbox.grid(column=2, row=2)
 
-        button.place(x=0, y=0)
+        # button.place(x=0, y=0)
+        frame.place(x=0, y=0)
 
     def press_button(self):
         """Handle pressing the button"""

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!./bin/python
 """The Main entry point"""
 from tkinter import Tk
 from app import ToDoListApp
@@ -7,7 +7,7 @@ from app import ToDoListApp
 def main():
     """The main function"""
     root = Tk()
-    app = ToDoListApp(root)
+    ToDoListApp(root)
     root.mainloop()
 
 
